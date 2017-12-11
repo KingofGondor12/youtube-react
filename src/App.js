@@ -4,6 +4,7 @@ import axios from 'axios';
 import VideoList from './components/VideoList';
 import CurrentVideo from './components/CurrentVideo';
 import './App.css';
+require('dotenv').config({path: '../'})
 
 class App extends Component {
   state = {
@@ -22,10 +23,10 @@ class App extends Component {
             <CurrentVideo video={this.state.selectedVideo}/>
           </Col>
           <Col xs={6} md={4}>
-            <VideoList 
-              xs={12} 
-              md={8} 
-              videos={this.state.videos} 
+            <VideoList
+              xs={12}
+              md={8}
+              videos={this.state.videos}
               onVideoSelect={selectedVideo => this.setState({selectedVideo})}/>
           </Col>
         </Row>
@@ -34,7 +35,7 @@ class App extends Component {
   }
 
   componentDidMount(){
-    axios.get('https://www.googleapis.com/youtube/v3/search?part=snippet&q=gaming&type=video&videoCaption=closedCaption&key=YOUR_API_KEY')
+    axios.get('https://www.googleapis.com/youtube/v3/search?part=snippet&q=gaming&type=video&videoCaption=closedCaption&key=AIzaSyAK30fs1nBLJdfWHI6D-VFowknKIJ2qHOU' )
       .then((response) => {
         console.log(response.data.items)
         this.setState({
